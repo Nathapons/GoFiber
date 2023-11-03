@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-	"main/controllers"
+	"main/routers"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -10,9 +10,7 @@ import (
 func main() {
 	app := fiber.New()
 
-	app.Get("/", controllers.GetList)
-	app.Get("/:id", controllers.GetDetail)
-	app.Get("/api/user", controllers.QueryParam)
+	routers.DefineRoutes(app)
 
 	log.Fatal(app.Listen(":7000"))
 }
